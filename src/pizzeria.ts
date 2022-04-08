@@ -140,14 +140,14 @@ function renderExtraToppings(extras) {
       var id = crypto.randomUUID();
 
       return `
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="${
-    extra.name
-  }" id="${id}"/>
-  <label class="form-check-label" for="${id}">
-    ${extra.name} (+${formatCurrency(extra.price)})
-  </label>
-</div>`;
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="${
+            extra.name
+          }" id="${id}"/>
+          <label class="form-check-label" for="${id}">
+            ${extra.name} (+${formatCurrency(extra.price)})
+          </label>
+        </div>`;
     })
     .join('');
 }
@@ -158,28 +158,28 @@ function renderPizza(pizza) {
   var pizzaElement = document.createElement('article');
   pizzaElement.classList.add('card', 'mb-3');
   pizzaElement.innerHTML = `
-  <form onsubmit="addPizza(event)">
-    <div class="row g-0">
-      <div class="col-md-3">
-        <img
-          class="img-fluid rounded-start" 
-          src="${pizza.imageUrl}"
-          alt="${pizza.name}"
-          title="${pizza.imageCredit}"
-        />
-      </div>
-      <div class="col-md-9">
-        <div class="card-body">
-          <h5 class="card-title">${pizza.name}</h5>
-          <h6 class="card-title float-end">${formatCurrency(pizza.price)}</h6>
-          <h6 class="mt-5">Extra Toppings</h6>
-          ${extraToppings}
-          <button type="submit" class="btn btn-primary">Add</button>
+    <form onsubmit="addPizza(event)">
+      <div class="row g-0">
+        <div class="col-md-3">
+          <img
+            class="img-fluid rounded-start" 
+            src="${pizza.imageUrl}"
+            alt="${pizza.name}"
+            title="${pizza.imageCredit}"
+          />
         </div>
-        
+        <div class="col-md-9">
+          <div class="card-body">
+            <h5 class="card-title">${pizza.name}</h5>
+            <h6 class="card-title float-end">${formatCurrency(pizza.price)}</h6>
+            <h6 class="mt-5">Extra Toppings</h6>
+            ${extraToppings}
+            <button type="submit" class="btn btn-primary">Add</button>
+          </div>
+          
+        </div>
       </div>
-    </div>
-  </form>`;
+    </form>`;
 
   return pizzaElement;
 }
