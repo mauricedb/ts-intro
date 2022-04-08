@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    /* Visit https://aka.ms/tsconfig.json to read more about this file */
+
+    /* Language and Environment */
+    "target": "es2016"
+  },
+  "files": ["src/pizzeria.ts"]
+}
