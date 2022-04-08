@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "live-server ./src",
-    "compile": "tsc src/pizzeria.ts",
+    "compile": "tsc src/pizzeria.ts --target es2016",
     "compile:watch": "npm run compile -- --watch"
   },
   "keywords": [],
