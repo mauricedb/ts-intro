@@ -1,1 +1,1 @@
-# typescript-workshop-2022
+# TypeScript Introduction Workshop 2022
