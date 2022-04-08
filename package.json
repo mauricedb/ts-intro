@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "live-server ./src",
-    "compile": "tsc src/pizzeria.ts"
+    "compile": "tsc src/pizzeria.ts",
+    "compile:watch": "npm run compile -- --watch"
   },
   "keywords": [],
   "author": "Maurice de Beijer",

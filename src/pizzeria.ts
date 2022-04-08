@@ -64,7 +64,7 @@ var pizzas = [
 function checkout(amount, account) {
   document.getElementById('checkout-amount').innerText = formatCurrency(amount);
   document.getElementById('checkout-account').innerText = account;
-  document.getElementById('checkout-dialog').showModal();
+  (document.getElementById('checkout-dialog') as any).showModal();
 }
 
 function addPizza(e) {
@@ -72,7 +72,9 @@ function addPizza(e) {
 
   var formElement = e.srcElement;
   var pizza = formToPizzaMap.get(formElement);
-  var formInputElements = Array.from(formElement.elements);
+  var formInputElements = Array.from(
+    formElement.elements
+  ) as HTMLInputElement[];
 
   var selectedExtraElements = formInputElements
     .filter((element) => element.type === 'checkbox' && element.checked)
@@ -107,7 +109,7 @@ function renderOrder() {
   var orderElement = document.getElementById('order');
   orderElement.innerHTML = order.length ? '' : 'No items in the order yet';
 
-  for (orderItem of order) {
+  for (const orderItem of order) {
     var orderItemElement = document.createElement('li');
     orderItemElement.classList.add('list-group-item');
     orderItemElement.classList.add('d-flex');
@@ -188,7 +190,7 @@ function renderMenu() {
   var menuElement = document.getElementById('menu');
   menuElement.innerHTML = '';
 
-  for (pizza of pizzas) {
+  for (const pizza of pizzas) {
     var pizzaElement = renderPizza(pizza);
     var formElement = pizzaElement.querySelector('form');
     formToPizzaMap.set(formElement, pizza);
