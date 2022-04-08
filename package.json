@@ -1,0 +1,16 @@
+{
+  "name": "pizzeria",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server ./src"
+  },
+  "keywords": [],
+  "author": "Maurice de Beijer",
+  "license": "MIT",
+  "dependencies": {
+    "live-server": "1.2.1",
+    "prettier": "^2.6.2"
+  }
+}
