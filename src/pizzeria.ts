@@ -80,10 +80,16 @@ const pizzas: Pizza[] = [
   },
 ];
 
+interface MyHTMLDialogElement extends HTMLElement {
+  showModal: Function;
+}
+
 function checkout(amount, account) {
   document.getElementById('checkout-amount').innerText = formatCurrency(amount);
   document.getElementById('checkout-account').innerText = account;
-  (document.getElementById('checkout-dialog') as any).showModal();
+  (
+    document.getElementById('checkout-dialog') as MyHTMLDialogElement
+  ).showModal();
 }
 
 function addPizza(e: SubmitEvent) {
