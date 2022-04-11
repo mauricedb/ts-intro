@@ -66,7 +66,7 @@ function checkout(amount, account) {
 }
 function addPizza(e) {
     e.preventDefault();
-    const formElement = e.srcElement;
+    const formElement = e.target;
     const pizza = formToPizzaMap.get(formElement);
     const formInputElements = Array.from(formElement.elements);
     const selectedExtraElements = formInputElements

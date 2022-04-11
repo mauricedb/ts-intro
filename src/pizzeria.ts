@@ -67,10 +67,10 @@ function checkout(amount, account) {
   (document.getElementById('checkout-dialog') as any).showModal();
 }
 
-function addPizza(e) {
+function addPizza(e: SubmitEvent) {
   e.preventDefault();
 
-  const formElement = e.srcElement;
+  const formElement = e.target as HTMLFormElement;
   const pizza = formToPizzaMap.get(formElement);
   const formInputElements = Array.from(
     formElement.elements
