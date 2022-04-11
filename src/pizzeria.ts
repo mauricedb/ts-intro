@@ -1,11 +1,11 @@
-var formatCurrency = new Intl.NumberFormat('nl-NL', {
+const formatCurrency = new Intl.NumberFormat('nl-NL', {
   style: 'currency',
   currency: 'EUR',
 }).format;
 
-var order = [];
-var formToPizzaMap = new WeakMap();
-var pizzas = [
+const order = [];
+const formToPizzaMap = new WeakMap();
+const pizzas = [
   {
     name: 'Pepperoni Pizza',
     price: 14.5,
@@ -70,25 +70,25 @@ function checkout(amount, account) {
 function addPizza(e) {
   e.preventDefault();
 
-  var formElement = e.srcElement;
-  var pizza = formToPizzaMap.get(formElement);
-  var formInputElements = Array.from(
+  const formElement = e.srcElement;
+  const pizza = formToPizzaMap.get(formElement);
+  const formInputElements = Array.from(
     formElement.elements
   ) as HTMLInputElement[];
 
-  var selectedExtraElements = formInputElements
+  const selectedExtraElements = formInputElements
     .filter((element) => element.type === 'checkbox' && element.checked)
     .map((element) => element.value);
 
-  var extraToppings = pizza.extras.filter((extra) =>
+  const extraToppings = pizza.extras.filter((extra) =>
     selectedExtraElements.includes(extra.name)
   );
-  var price = extraToppings.reduce(
+  const price = extraToppings.reduce(
     (acc, extra) => acc + extra.price,
     pizza.price
   );
 
-  var itemOrderd = {
+  const itemOrderd = {
     name: pizza.name,
     price: price,
     extras: extraToppings,
@@ -100,23 +100,23 @@ function addPizza(e) {
 }
 
 function renderOrderTotal() {
-  var orderTotalElement = document.getElementById('order-total');
-  var totalPrice = order.reduce((acc, item) => acc + item.price, 0);
+  const orderTotalElement = document.getElementById('order-total');
+  const totalPrice = order.reduce((acc, item) => acc + item.price, 0);
   orderTotalElement.innerHTML = totalPrice;
 }
 
 function renderOrder() {
-  var orderElement = document.getElementById('order');
+  const orderElement = document.getElementById('order');
   orderElement.innerHTML = order.length ? '' : 'No items in the order yet';
 
   for (const orderItem of order) {
-    var orderItemElement = document.createElement('li');
+    const orderItemElement = document.createElement('li');
     orderItemElement.classList.add('list-group-item');
     orderItemElement.classList.add('d-flex');
     orderItemElement.classList.add('justify-content-between');
     orderItemElement.classList.add('align-items-start');
 
-    var extraToppings =
+    const extraToppings =
       orderItem.extras.map((extra) => `<li>${extra.name}</li>`).join('') ||
       '<li>No extras</li>';
 
@@ -139,7 +139,7 @@ function renderOrder() {
 function renderExtraToppings(extras) {
   return extras
     .map((extra) => {
-      var id = crypto.randomUUID();
+      const id = crypto.randomUUID();
 
       return `
         <div class="form-check">
@@ -155,9 +155,9 @@ function renderExtraToppings(extras) {
 }
 
 function renderPizza(pizza) {
-  var extraToppings = renderExtraToppings(pizza.extras);
+  const extraToppings = renderExtraToppings(pizza.extras);
 
-  var pizzaElement = document.createElement('article');
+  const pizzaElement = document.createElement('article');
   pizzaElement.classList.add('card', 'mb-3');
   pizzaElement.innerHTML = `
     <form onsubmit="addPizza(event)">
@@ -187,12 +187,12 @@ function renderPizza(pizza) {
 }
 
 function renderMenu() {
-  var menuElement = document.getElementById('menu');
+  const menuElement = document.getElementById('menu');
   menuElement.innerHTML = '';
 
   for (const pizza of pizzas) {
-    var pizzaElement = renderPizza(pizza);
-    var formElement = pizzaElement.querySelector('form');
+    const pizzaElement = renderPizza(pizza);
+    const formElement = pizzaElement.querySelector('form');
     formToPizzaMap.set(formElement, pizza);
 
     menuElement.appendChild(pizzaElement);
