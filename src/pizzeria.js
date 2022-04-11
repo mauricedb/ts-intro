@@ -49,7 +49,7 @@ const pizzas = [
     },
     {
         name: 'Pizza with Spinache',
-        price: '13.5',
+        price: 13.5,
         imageUrl: './images/saundarya-srinivasan-60nzTP7_hMQ-unsplash.jpg',
         imageCredit: 'Photo by Saundarya Srinivasan on Unsplash',
         extras: [
@@ -85,7 +85,7 @@ function addPizza(e) {
 function renderOrderTotal() {
     const orderTotalElement = document.getElementById('order-total');
     const totalPrice = order.reduce((acc, item) => acc + item.price, 0);
-    orderTotalElement.innerHTML = totalPrice;
+    orderTotalElement.innerHTML = formatCurrency(totalPrice);
 }
 function renderOrder() {
     const orderElement = document.getElementById('order');

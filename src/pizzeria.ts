@@ -3,9 +3,28 @@ const formatCurrency = new Intl.NumberFormat('nl-NL', {
   currency: 'EUR',
 }).format;
 
-const order = [];
-const formToPizzaMap = new WeakMap();
-const pizzas = [
+interface Pizza {
+  name: string;
+  price: number;
+  imageUrl: string;
+  imageCredit: string;
+  extras: ExtraIngredient[];
+}
+
+interface ExtraIngredient {
+  name: string;
+  price: number;
+}
+
+interface OrderItem {
+  name: string;
+  price: number;
+  extras: ExtraIngredient[];
+}
+
+const order: OrderItem[] = [];
+const formToPizzaMap = new WeakMap<HTMLElement, Pizza>();
+const pizzas: Pizza[] = [
   {
     name: 'Pepperoni Pizza',
     price: 14.5,
@@ -50,7 +69,7 @@ const pizzas = [
   },
   {
     name: 'Pizza with Spinache',
-    price: '13.5',
+    price: 13.5,
     imageUrl: './images/saundarya-srinivasan-60nzTP7_hMQ-unsplash.jpg',
     imageCredit: 'Photo by Saundarya Srinivasan on Unsplash',
     extras: [
@@ -88,7 +107,7 @@ function addPizza(e: SubmitEvent) {
     pizza.price
   );
 
-  const itemOrderd = {
+  const itemOrderd: OrderItem = {
     name: pizza.name,
     price: price,
     extras: extraToppings,
@@ -102,7 +121,7 @@ function addPizza(e: SubmitEvent) {
 function renderOrderTotal() {
   const orderTotalElement = document.getElementById('order-total');
   const totalPrice = order.reduce((acc, item) => acc + item.price, 0);
-  orderTotalElement.innerHTML = totalPrice;
+  orderTotalElement.innerHTML = formatCurrency(totalPrice);
 }
 
 function renderOrder() {
