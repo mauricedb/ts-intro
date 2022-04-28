@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "strict": false
+    // "noImplicitAny": true
+  },
+  "files": ["src/pizzeria.ts"]
+}

@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "live-server ./src"
+    "serve": "live-server ./src",
+    "compile": "tsc",
+    "compile:watch": "npm run compile -- --watch",
+    "bla": "echo bla"
   },
   "keywords": [],
   "author": "Maurice de Beijer",
@@ -12,5 +15,8 @@
   "dependencies": {
     "live-server": "1.2.1",
     "prettier": "^2.6.2"
+  },
+  "devDependencies": {
+    "typescript": "^4.6.3"
   }
 }

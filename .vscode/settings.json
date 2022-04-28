@@ -1,0 +1,4 @@
+{
+  "editor.formatOnSave": true,
+  "js/ts.implicitProjectConfig.target": "ES2016"
+}
