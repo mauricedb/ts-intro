@@ -12,7 +12,7 @@
   "author": "Maurice de Beijer",
   "license": "MIT",
   "dependencies": {
-    "live-server": "1.2.1",
+    "live-server": "1.2.2",
     "prettier": "2.6.2",
     "typescript": "^4.6.3"
   }
